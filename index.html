@@ -514,8 +514,8 @@
                 Our film project created by ACT NETWORKING.
             </p>
             <div class="cta-buttons">
-                <!-- Plays YouTube Embed Video -->
-                <button class="btn btn-primary" onclick="openVideoModal('vm2O5G0-Byg')">
+                <!-- Plays All YouTube Scenes Continuously -->
+                <button class="btn btn-primary" onclick="playAllScenes()">
                     <i class="fa-solid fa-play"></i> Play Film
                 </button>
                 <button class="btn btn-secondary" onclick="openVideoModal('vm2O5G0-Byg')">
@@ -708,8 +708,19 @@
         const videoModal = document.getElementById('videoModal');
         const modalIframe = document.getElementById('modalIframe');
 
+        // All scene video IDs in order
+        const scenePlaylist = ['JEbP2AjpFAM', 'vm2O5G0-Byg', '63cw0PdJ-GE', 'Q-ds-AHYUVA', 'I5LkEGNYUNs'];
+
         function openVideoModal(videoId) {
             modalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            videoModal.style.display = 'flex';
+        }
+
+        // Function to play all scenes continuously starting from Scene 1
+        function playAllScenes() {
+            const firstVideo = scenePlaylist[0];
+            const remainingVideos = scenePlaylist.slice(1).join(',');
+            modalIframe.src = `https://www.youtube.com/embed/${firstVideo}?autoplay=1&playlist=${remainingVideos}&rel=0`;
             videoModal.style.display = 'flex';
         }
 
